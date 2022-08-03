@@ -1,7 +1,0 @@
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: university-gcp-storageclass
-provisioner: dobs.csi.digitalocean.com
-reclaimPolicy: Delete
-volumeBindingMode: Immediate
