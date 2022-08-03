@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authority-dtg
+  annotations:
+    fluxcd.io/automated: "false"
+  namespace: authority-ns
+spec:
+  releaseName: authority-dtg
+  interval: 1m
+  chart:
+   spec:
+    chart: platforms/hyperledger-indy/charts/indy-domain-genesis
+    sourceRef:
+      kind: GitRepository
+      name: flux-bevel
+      namespace: flux-bevel
+  values:
+    metadata:
+      name: authority-dtg
+      namespace: authority-ns
+    organization:
+      name: authority
+    configmap:
+      domainGenesis: |-
+        {"reqSignature":{},"txn":{"data":{"alias":"authority-trustee","dest":"PeYGp7ArErLGfr9PwvesfU","role":"0","verkey":"DLvZfBPnUnNLbZkd4QnMBwdfXwav4zNqEm9YoNUvxsPi"},"metadata":{},"type":"1"},"txnMetadata":{"seqNo":1},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"authority-trustee","dest":"K34B6K76yyLz6JNAFGDX6w","role":"0","verkey":"Aq8rR9HESVwzEFG9a4u7TkUtfA7oWk21DCfGcc7RDMin"},"metadata":{"from":"PeYGp7ArErLGfr9PwvesfU"},"type":"1"},"txnMetadata":{"seqNo":2},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"university-steward-1","dest":"2ezaqteeaYyW8aPRpYFNPj","role":"2","verkey":"uKXHqSWbLKLwRiKzMPqTGhpUvnVHoBZchjFcCfs29Zk"},"metadata":{"from":"K34B6K76yyLz6JNAFGDX6w"},"type":"1"},"txnMetadata":{"seqNo":3},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"university-steward-2","dest":"HLg7u1TwzyyNEekhBEpjfe","role":"2","verkey":"9uWrmSUduTvHA8Dci6pc6wWRKJLYs52m6AEWaKCUgizW"},"metadata":{"from":"K34B6K76yyLz6JNAFGDX6w"},"type":"1"},"txnMetadata":{"seqNo":4},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"university-steward-3","dest":"CZ66coe6ayvDwSn1s7jYGE","role":"2","verkey":"7JDoL7fFy19vqPrx46xHFjR6diFnRrDDVcD4j6ffDspi"},"metadata":{"from":"K34B6K76yyLz6JNAFGDX6w"},"type":"1"},"txnMetadata":{"seqNo":5},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"university-steward-4","dest":"KzN2Ux6FzjAoTdN9JZLqNL","role":"2","verkey":"BMHEvpQhzqayEjxt7DXmYvpneywU9RjHkeR1Rn8ZzXpH"},"metadata":{"from":"K34B6K76yyLz6JNAFGDX6w"},"type":"1"},"txnMetadata":{"seqNo":6},"ver":"1"}
